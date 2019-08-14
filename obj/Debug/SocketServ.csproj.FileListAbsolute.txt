@@ -1,0 +1,6 @@
+F:\private\SocketServ\SocketServ\bin\Debug\SocketServ.exe.config
+F:\private\SocketServ\SocketServ\bin\Debug\SocketServ.exe
+F:\private\SocketServ\SocketServ\bin\Debug\SocketServ.pdb
+F:\private\SocketServ\SocketServ\obj\Debug\SocketServ.csprojResolveAssemblyReference.cache
+F:\private\SocketServ\SocketServ\obj\Debug\SocketServ.exe
+F:\private\SocketServ\SocketServ\obj\Debug\SocketServ.pdb

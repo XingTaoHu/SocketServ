@@ -13,7 +13,23 @@ namespace SocketServ
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            OpenSocket();
+            OpenServ();
+        }
+
+        static void OpenServ()
+        {
+            Serv serv = new Serv();
+            serv.Start("127.0.0.1", 1234);
+
+            while (true)
+            {
+                string str = Console.ReadLine();
+                switch (str)
+                { 
+                    case "quit":
+                        return;
+                }
+            }
         }
 
         static void OpenSocket()
@@ -37,7 +53,10 @@ namespace SocketServ
                 string str = System.Text.Encoding.UTF8.GetString(readBuff, 0, count);
                 Console.WriteLine("[服务器接收]" + str);
                 //send
-                byte[] bytes = System.Text.Encoding.Default.GetBytes("serv echo " + str);
+                //byte[] bytes = System.Text.Encoding.Default.GetBytes("serv echo " + str);
+                //connfd.Send(bytes);
+                str = System.DateTime.Now.ToString();
+                byte[] bytes = System.Text.Encoding.Default.GetBytes(str);
                 connfd.Send(bytes);
             }
         }

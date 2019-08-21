@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using System.Collections;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace SocketServ
 {
@@ -17,6 +20,9 @@ namespace SocketServ
         public Conn[] conns;
         //最大连接数
         public int maxConn = 50;
+
+        //指向MySQL连接的成员
+        MySqlConnection sqlConn;
 
         //获取连接池索引，返回负数表示获取失败
         public int NewIndex() {
@@ -39,6 +45,9 @@ namespace SocketServ
 
         //开启服务器
         public void Start(string host, int port) { 
+            //数据库
+            ConnectMysql();
+
             //连接池
             conns = new Conn[maxConn];
             for (int i = 0; i < maxConn; i++)
@@ -56,6 +65,20 @@ namespace SocketServ
             //Accept
             listenfd.BeginAccept(AcceptCb, null);
             Console.WriteLine("[服务器]启动成功");
+        }
+
+        public void ConnectMysql()
+        {
+            string connStr = "Database=msgboard;Data Source=127.0.0.1;";
+            connStr += "User Id=root;Password=123456;port=3306";
+            sqlConn = new MySqlConnection(connStr);
+            try
+            {
+                sqlConn.Open();
+            }
+            catch (Exception e) {
+                Console.Write("[数据库]连接失败" + e.Message);
+            }
         }
 
         /// <summary>
@@ -121,6 +144,8 @@ namespace SocketServ
                 //数据处理
                 string str = System.Text.Encoding.UTF8.GetString(conn.readBuff, 0, count);
                 Console.WriteLine("收到[" + conn.GetAddress() + "] 数据：" + str);
+                //处理数据
+                HandleMsg(conn, str);
                 str = conn.GetAddress() + ":" + str;
                 byte[] bytes = System.Text.Encoding.Default.GetBytes(str);
                 //广播
@@ -129,6 +154,8 @@ namespace SocketServ
                     if (conns[i] == null)
                         continue;
                     if (!conns[i].isUse)
+                        continue;
+                    if (conns[i] == conn)
                         continue;
                     Console.WriteLine("将消息转播给：" + conns[i].GetAddress());
                     conns[i].socket.Send(bytes);
@@ -143,8 +170,51 @@ namespace SocketServ
             }
         }
 
-
-
+        /// <summary>
+        /// 数据处理
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="str"></param>
+        public void HandleMsg(Conn conn, string str)
+        {
+            if (str == "_GET")
+            {
+                string cmdStr = "Select * from msg order by id desc limit 10;";
+                MySqlCommand cmd = new MySqlCommand(cmdStr, sqlConn);
+                try
+                {
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    str = "";
+                    while (dataReader.Read())
+                    {
+                        str += dataReader["name"] + ":" + dataReader["msg"] + "\n\r";
+                    }
+                    dataReader.Close();
+                    str = str.Substring(0, str.Length - 2);
+                    byte[] bytes = System.Text.Encoding.Default.GetBytes(str);
+                    conn.socket.Send(bytes);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("[数据库]查询失败" + e.Message);
+                }
+            }
+            else {
+                string cmdStrFormat = "insert into msg set name ='{0}' ,msg='{1}';";
+                string cmdStr = string.Format(cmdStrFormat, conn.GetAddress(), str);
+                MySqlCommand cmd = new MySqlCommand(cmdStr, sqlConn);
+                try {
+                    cmd.ExecuteNonQuery();
+                    str = conn.GetAddress() + ":" + str;
+                    byte[] bytes = System.Text.Encoding.Default.GetBytes(str);
+                    conn.socket.Send(bytes);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("[数据库]插入失败" + e.Message);
+                }
+            }
+        }
 
 
     }

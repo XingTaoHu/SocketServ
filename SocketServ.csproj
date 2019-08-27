@@ -62,9 +62,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conn.cs" />
+    <Compile Include="LocationServ.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serv.cs" />
+    <Compile Include="ChatServ.cs" />
+    <Compile Include="SerializeServ.cs" />
+    <Compile Include="ThreadServ.cs" />
+    <Compile Include="TimerServ.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

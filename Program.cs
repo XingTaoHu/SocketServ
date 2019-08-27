@@ -13,52 +13,18 @@ namespace SocketServ
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            OpenServ();
-        }
-
-        static void OpenServ()
-        {
-            Serv serv = new Serv();
-            serv.Start("127.0.0.1", 1234);
-
-            while (true)
-            {
-                string str = Console.ReadLine();
-                switch (str)
-                { 
-                    case "quit":
-                        return;
-                }
-            }
-        }
-
-        static void OpenSocket()
-        { 
-            //Socket 
-            Socket listenfd = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            //Bind
-            IPAddress ipAdr = IPAddress.Parse("127.0.0.1");
-            IPEndPoint ipEp = new IPEndPoint(ipAdr, 1234);
-            listenfd.Bind(ipEp);
-            //Listen(参数指定队列中最多可容纳等待接受的连接数，0表示不限制)
-            listenfd.Listen(0);
-            Console.WriteLine("[服务器]启动成功");
-            while (true) { 
-                //Accept
-                Socket connfd = listenfd.Accept();
-                Console.WriteLine("[服务器]Accept");
-                //Recv
-                byte[] readBuff = new byte[1024];
-                int count = connfd.Receive(readBuff);
-                string str = System.Text.Encoding.UTF8.GetString(readBuff, 0, count);
-                Console.WriteLine("[服务器接收]" + str);
-                //send
-                //byte[] bytes = System.Text.Encoding.Default.GetBytes("serv echo " + str);
-                //connfd.Send(bytes);
-                str = System.DateTime.Now.ToString();
-                byte[] bytes = System.Text.Encoding.Default.GetBytes(str);
-                connfd.Send(bytes);
-            }
+            //开启聊天服务器
+            //ChatServ.OpenServ();
+            //开启同步位置服务器
+            LocationServ.OpenServ();
+            //序列化数据
+            //SerializeServ.SerializePlayer();
+            //反序列化数据
+            //SerializeServ.DeserializePlayer();
+            //计时器
+            //TimerServ.TimerStart();
+            //线程
+            //ThreadServ.ThreadStart();
         }
 
     }

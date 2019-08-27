@@ -12,7 +12,7 @@ using System.Data;
 
 namespace SocketServ
 {
-    public class Serv
+    public class ChatServ
     {
         //监听嵌套字
         public Socket listenfd;
@@ -23,6 +23,25 @@ namespace SocketServ
 
         //指向MySQL连接的成员
         MySqlConnection sqlConn;
+
+
+        //开启服务器
+        public static void OpenServ()
+        {
+            ChatServ serv = new ChatServ();
+            serv.Start("127.0.0.1", 1234);
+
+            while (true)
+            {
+                string str = Console.ReadLine();
+                switch (str)
+                {
+                    case "quit":
+                        return;
+                }
+            }
+        }
+
 
         //获取连接池索引，返回负数表示获取失败
         public int NewIndex() {

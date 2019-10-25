@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{F68B633C-36B5-4056-AA8F-745211EE5918}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="core/ServNet.cs">
+    <Files>
+      <File FileName="core/Conn.cs" Line="22" Column="55" />
+      <File FileName="core/ServNet.cs" Line="145" Column="1" />
+      <File FileName="logic/MainClass.cs" Line="8" Column="15" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SocketServ PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

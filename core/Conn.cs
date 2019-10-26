@@ -38,7 +38,7 @@ public class Conn
         isUse = true;
         buffCount = 0;
         //心跳处理
-
+        lastTickTime = Sys.GetTimeStamp(); //记录当前连接的时间
     }
 
     //剩余的buff

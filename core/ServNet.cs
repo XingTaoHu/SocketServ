@@ -22,6 +22,11 @@ public class ServNet
     //单例
     public static ServNet instance;
 
+    //主定时器
+    System.Timers.Timer timer = new System.Timers.Timer(1000);
+    //心跳时间
+    public long heartBeatTime = 180;
+
     public ServNet()
     {
         instance = this;
@@ -69,6 +74,36 @@ public class ServNet
         //Accept
         listenfd.BeginAccept(AcceptCb, null);
         Console.WriteLine("[服务器]启动成功");
+        //定时器
+        timer.Elapsed += new System.Timers.ElapsedEventHandler(HandleMainTimer);
+        timer.AutoReset = false;
+        timer.Enabled = true;
+    }
+
+    //主定时器
+    public void HandleMainTimer(object sender, System.Timers.ElapsedEventArgs e)
+    {
+        //处理心跳
+        HeartBeat();
+        timer.Start();
+    }
+    //心跳
+    public void HeartBeat()
+    {
+        Console.WriteLine("[主定时器执行]");
+        long timeNow = Sys.GetTimeStamp();
+        for (int i = 0; i < conns.Length;  i++)
+        {
+            Conn conn = conns[i];
+            if (conn == null) continue;
+            if (!conn.isUse) continue;
+            if(conn.lastTickTime < timeNow - heartBeatTime)
+            {
+                Console.WriteLine("[心跳引起断开连接]" + conn.GetAddress());
+                lock (conn)
+                    conn.Close();
+            }
+        }
     }
 
     //连接数据库
@@ -157,6 +192,8 @@ public class ServNet
         //处理消息
         string str = System.Text.Encoding.UTF8.GetString(conn.readBuff, sizeof(Int32), conn.msgLength);
         Console.WriteLine("收到消息[" + conn.GetAddress() + "] " + str);
+        if (str == "HeartBeat")
+            conn.lastTickTime = Sys.GetTimeStamp();
         Send(conn, str);
         //清除已经处理的消息
         int count = conn.buffCount - conn.msgLength - sizeof(Int32);

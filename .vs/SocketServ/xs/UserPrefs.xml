@@ -1,9 +1,12 @@
 ﻿<Properties StartupConfiguration="{F68B633C-36B5-4056-AA8F-745211EE5918}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="core/ServNet.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="core/ProtocolStr.cs">
     <Files>
-      <File FileName="core/Conn.cs" Line="22" Column="55" />
-      <File FileName="core/ServNet.cs" Line="145" Column="1" />
-      <File FileName="logic/MainClass.cs" Line="8" Column="15" />
+      <File FileName="core/Conn.cs" Line="33" Column="5" />
+      <File FileName="core/ServNet.cs" Line="196" Column="52" />
+      <File FileName="logic/MainClass.cs" Line="45" Column="19" />
+      <File FileName="core/Sys.cs" Line="7" Column="49" />
+      <File FileName="core/ProtocolBase.cs" Line="23" Column="5" />
+      <File FileName="core/ProtocolStr.cs" Line="7" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

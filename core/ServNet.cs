@@ -27,6 +27,9 @@ public class ServNet
     //心跳时间
     public long heartBeatTime = 180;
 
+    //协议
+    public ProtocolBase proto;
+
     public ServNet()
     {
         instance = this;
@@ -190,11 +193,13 @@ public class ServNet
         if (conn.buffCount < conn.msgLength + sizeof(Int32))    //如果数据分包了，先不处理
             return;
         //处理消息
-        string str = System.Text.Encoding.UTF8.GetString(conn.readBuff, sizeof(Int32), conn.msgLength);
-        Console.WriteLine("收到消息[" + conn.GetAddress() + "] " + str);
-        if (str == "HeartBeat")
-            conn.lastTickTime = Sys.GetTimeStamp();
-        Send(conn, str);
+        //string str = System.Text.Encoding.UTF8.GetString(conn.readBuff, sizeof(Int32), conn.msgLength);
+        //Console.WriteLine("收到消息[" + conn.GetAddress() + "] " + str);
+        //if (str == "HeartBeat")
+        //    conn.lastTickTime = Sys.GetTimeStamp();
+        //Send(conn, str);
+        ProtocolBase protocol = proto.Decode(conn.readBuff, sizeof(Int32), conn.msgLength);
+        HandleMsg(conn, protocol);
         //清除已经处理的消息
         int count = conn.buffCount - conn.msgLength - sizeof(Int32);
         Array.Copy(conn.readBuff, sizeof(Int32) + conn.msgLength, conn.readBuff, 0, count);
@@ -205,10 +210,25 @@ public class ServNet
         }
     }
 
-    //发送消息
-    public void Send(Conn conn, string str)
+    //处理消息
+    private void HandleMsg(Conn conn, ProtocolBase protocolBase)
     {
-        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(str);
+        string name = protocolBase.GetName();
+        Console.WriteLine("[收到协议]" + name);
+        //处理心跳
+        if(name == "HeatBeat")
+        {
+            Console.WriteLine("[更新心跳时间]" + conn.GetAddress());
+            conn.lastTickTime = Sys.GetTimeStamp();
+        }
+        //返回消息
+        Send(conn, protocolBase);
+    }
+
+    //发送消息
+    public void Send(Conn conn, ProtocolBase protocol)
+    {
+        byte[] bytes = protocol.Encode();
         byte[] length = BitConverter.GetBytes(bytes.Length);
         byte[] sendbuff = length.Concat(bytes).ToArray();
         try{
@@ -221,6 +241,18 @@ public class ServNet
         }
     }
 
+    //广播
+    public void Broadcast(ProtocolBase protocol)
+    {
+        for (int i = 0; i < conns.Length; i++)
+        {
+            if (!conns[i].isUse)
+                continue;
+            if (conns[i].player == null)
+                continue;
+            Send(conns[i], protocol);
+        }
+    }
 
     //关闭
     public void Close()

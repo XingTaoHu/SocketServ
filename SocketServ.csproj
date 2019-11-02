@@ -71,6 +71,7 @@
     <Compile Include="core\Sys.cs" />
     <Compile Include="core\ProtocolBase.cs" />
     <Compile Include="core\ProtocolStr.cs" />
+    <Compile Include="core\ProtocolBytes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

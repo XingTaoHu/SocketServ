@@ -30,6 +30,11 @@ public class ServNet
     //协议
     public ProtocolBase proto;
 
+    //消息分类
+    public HandleConnMsg handleConnMsg = new HandleConnMsg();
+    public HandlePlayerMsg handlePlayerMsg = new HandlePlayerMsg();
+    public HandlePlayerEvent handlePlayerEvent = new HandlePlayerEvent();
+
     public ServNet()
     {
         instance = this;
@@ -193,11 +198,6 @@ public class ServNet
         if (conn.buffCount < conn.msgLength + sizeof(Int32))    //如果数据分包了，先不处理
             return;
         //处理消息
-        //string str = System.Text.Encoding.UTF8.GetString(conn.readBuff, sizeof(Int32), conn.msgLength);
-        //Console.WriteLine("收到消息[" + conn.GetAddress() + "] " + str);
-        //if (str == "HeartBeat")
-        //    conn.lastTickTime = Sys.GetTimeStamp();
-        //Send(conn, str);
         ProtocolBase protocol = proto.Decode(conn.readBuff, sizeof(Int32), conn.msgLength);
         HandleMsg(conn, protocol);
         //清除已经处理的消息
@@ -214,15 +214,34 @@ public class ServNet
     private void HandleMsg(Conn conn, ProtocolBase protocolBase)
     {
         string name = protocolBase.GetName();
-        Console.WriteLine("[收到协议]" + name);
-        //处理心跳
-        if(name == "HeatBeat")
+        string methodName = "Msg" + name;
+        //连接协议分发
+        if(conn.player == null || name == "HeatBeat" || name == "Logout")
         {
-            Console.WriteLine("[更新心跳时间]" + conn.GetAddress());
-            conn.lastTickTime = Sys.GetTimeStamp();
+            MethodInfo mm = handleConnMsg.GetType().GetMethod(methodName);
+            if(mm == null)
+            {
+                string str = "[警告]HandleMsg没有处理连接方法:";
+                Console.WriteLine(str + methodName);
+                return;
+            }
+            Object[] obj = new object[] { conn, protocolBase };
+            Console.WriteLine("[处理连接消息]" + conn.GetAddress() + ":" + name);
+            mm.Invoke(handleConnMsg, obj);
         }
-        //返回消息
-        Send(conn, protocolBase);
+        //角色协议分发 
+        else{
+            MethodInfo mm = handlePlayerMsg.GetType().GetMethod(methodName);
+            if(mm == null)
+            {
+                string str = "[警告]HandleMsg没有处理玩家方法:";
+                Console.WriteLine(str + methodName);
+                return;
+            }
+            Object[] obj = new object[] { conn.player, protocolBase };
+            Console.WriteLine("[处理玩家消息]" + conn.player.id + ":" + name);
+            mm.Invoke(handlePlayerMsg, obj);
+        }
     }
 
     //发送消息

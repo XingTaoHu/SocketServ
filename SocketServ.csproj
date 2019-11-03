@@ -62,9 +62,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="logic\PlayerData.cs" />
-    <Compile Include="logic\Player.cs" />
     <Compile Include="core\DataMgr.cs" />
-    <Compile Include="logic\MainClass.cs" />
     <Compile Include="logic\PlayerTempData.cs" />
     <Compile Include="core\Conn.cs" />
     <Compile Include="core\ServNet.cs" />
@@ -72,6 +70,11 @@
     <Compile Include="core\ProtocolBase.cs" />
     <Compile Include="core\ProtocolStr.cs" />
     <Compile Include="core\ProtocolBytes.cs" />
+    <Compile Include="core\MainClass.cs" />
+    <Compile Include="core\Player.cs" />
+    <Compile Include="logic\HandlePlayerEvent.cs" />
+    <Compile Include="logic\HandleConnMsg.cs" />
+    <Compile Include="logic\HandlePlayerMsg.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

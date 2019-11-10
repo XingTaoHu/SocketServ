@@ -22,10 +22,11 @@ public class DataMgr
     public void Connect()
     {
         string connStr = "Database=game;DataSource=127.0.0.1;";
-        connStr += "User Id=root;Password=mx666;port=3306";
+        connStr += "User Id=root;Password=123456;port=3306";
         sqlConn = new MySqlConnection(connStr);
         try{
             sqlConn.Open();
+            Console.WriteLine("[DataMgr]Connect Success");
         }catch(Exception e){
             Console.Write("[DataMgr]Connect " + e.Message);
             return;

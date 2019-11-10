@@ -4,13 +4,6 @@ F:/private/SocketServ/SocketServ/bin/Debug/SocketServ.pdb
 F:/private/SocketServ/SocketServ/obj/Debug/SocketServ.csprojResolveAssemblyReference.cache
 F:/private/SocketServ/SocketServ/obj/Debug/SocketServ.exe
 F:/private/SocketServ/SocketServ/obj/Debug/SocketServ.pdb
-E:/githubWorkspace/SocketServ/bin/Debug/SocketServ.exe.config
-E:/githubWorkspace/SocketServ/obj/Debug/SocketServ.exe
-E:/githubWorkspace/SocketServ/obj/Debug/SocketServ.pdb
-E:/githubWorkspace/SocketServ/bin/Debug/SocketServ.exe
-E:/githubWorkspace/SocketServ/bin/Debug/SocketServ.pdb
-E:/githubWorkspace/SocketServ/obj/Debug/SocketServ.csprojResolveAssemblyReference.cache
-E:/githubWorkspace/SocketServ/bin/Debug/Renci.SshNet.dll
 /Users/game/Documents/GitHub/SocketServ/obj/Debug/SocketServ.csprojAssemblyReference.cache
 /Users/game/Documents/GitHub/SocketServ/obj/Debug/SocketServ.csproj.CoreCompileInputs.cache
 /Users/game/Documents/GitHub/SocketServ/obj/Debug/SocketServ.exe
@@ -21,3 +14,10 @@ E:/githubWorkspace/SocketServ/bin/Debug/Renci.SshNet.dll
 /Users/game/Documents/GitHub/SocketServ/bin/Debug/MySql.Data.dll
 /Users/game/Documents/GitHub/SocketServ/bin/Debug/Renci.SshNet.dll
 /Users/game/Documents/GitHub/SocketServ/obj/Debug/SocketServ.csproj.CopyComplete
+E:\githubWorkspace\SocketServ\bin\Debug\SocketServ.exe.config
+E:\githubWorkspace\SocketServ\obj\Debug\SocketServ.exe
+E:\githubWorkspace\SocketServ\obj\Debug\SocketServ.pdb
+E:\githubWorkspace\SocketServ\bin\Debug\SocketServ.exe
+E:\githubWorkspace\SocketServ\bin\Debug\SocketServ.pdb
+E:\githubWorkspace\SocketServ\bin\Debug\Renci.SshNet.dll
+E:\githubWorkspace\SocketServ\obj\Debug\SocketServ.csprojResolveAssemblyReference.cache

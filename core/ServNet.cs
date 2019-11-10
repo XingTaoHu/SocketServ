@@ -28,7 +28,7 @@ public class ServNet
     public long heartBeatTime = 180;
 
     //协议
-    public ProtocolBase proto;
+    public ProtocolBase proto = new ProtocolBytes();
 
     //消息分类
     public HandleConnMsg handleConnMsg = new HandleConnMsg();
@@ -165,7 +165,6 @@ public class ServNet
         {
             try{
                 int count = conn.socket.EndReceive(ar);
-                Console.WriteLine("收到字节数长度:" + count);
                 //关闭信号
                 if(count <= 0)
                 {
@@ -251,7 +250,6 @@ public class ServNet
         byte[] bytes = protocol.Encode();
         byte[] length = BitConverter.GetBytes(bytes.Length);
         byte[] sendbuff = length.Concat(bytes).ToArray();
-        Console.WriteLine("bytes length:" + bytes.Length + ", length length:" + length.Length + ", sendbuff length:" + sendbuff.Length);
         try{
             //这里是异步发送，可以使用类似粘包分包处理方法确保sendbuff的全部内容被发送出去
             conn.socket.BeginSend(sendbuff, 0, sendbuff.Length, SocketFlags.None, null, null);

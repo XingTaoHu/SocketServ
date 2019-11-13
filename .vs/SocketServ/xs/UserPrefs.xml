@@ -1,17 +1,19 @@
 ﻿<Properties StartupConfiguration="{F68B633C-36B5-4056-AA8F-745211EE5918}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="logic/HandlePlayerEvent.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="logic/Scene.cs">
     <Files>
-      <File FileName="core/ServNet.cs" Line="290" Column="5" />
+      <File FileName="core/ServNet.cs" Line="290" Column="1" />
       <File FileName="core/Player.cs" Line="36" Column="26" />
       <File FileName="core/Conn.cs" Line="77" Column="31" />
       <File FileName="logic/PlayerTempData.cs" Line="6" Column="6" />
       <File FileName="core/DataMgr.cs" Line="14" Column="9" />
       <File FileName="logic/PlayerData.cs" Line="10" Column="2" />
-      <File FileName="logic/HandlePlayerEvent.cs" Line="11" Column="9" />
+      <File FileName="logic/HandlePlayerEvent.cs" Line="16" Column="2" />
       <File FileName="logic/HandleConnMsg.cs" Line="68" Column="25" />
       <File FileName="logic/HandlePlayerMsg.cs" Line="4" Column="1" />
       <File FileName="core/ProtocolBytes.cs" Line="64" Column="59" />
       <File FileName="core/MainClass.cs" Line="44" Column="35" />
+      <File FileName="logic/ScenePlayer.cs" Line="9" Column="26" />
+      <File FileName="logic/Scene.cs" Line="3" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

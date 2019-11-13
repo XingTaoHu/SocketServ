@@ -75,6 +75,8 @@
     <Compile Include="logic\HandlePlayerEvent.cs" />
     <Compile Include="logic\HandleConnMsg.cs" />
     <Compile Include="logic\HandlePlayerMsg.cs" />
+    <Compile Include="logic\ScenePlayer.cs" />
+    <Compile Include="logic\Scene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

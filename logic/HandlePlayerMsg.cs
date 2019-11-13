@@ -11,11 +11,12 @@ public partial class HandlePlayerMsg{
         string protoName = protocol.GetString(start, ref start);
         player.data.score += 1;
         Console.WriteLine("MsgAddScore " + player.id + " " + player.data.score);
-        //
+        //增加分数
         ProtocolBytes protoRet = new ProtocolBytes();
         protoRet.AddString("AddScore");
+        protoRet.AddString(player.id);
         protoRet.AddInt(player.data.score);
-        player.Send(protoRet);
+        ServNet.instance.Broadcast(protoRet);
     }
 
     //获取分数

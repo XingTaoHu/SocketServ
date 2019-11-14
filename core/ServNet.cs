@@ -164,6 +164,12 @@ public class ServNet
         lock(conn)
         {
             try{
+                if (conn.socket == null || !conn.socket.Connected)
+                {
+                    Console.WriteLine("socket已经断开连接 出了问题，不能处理消息了");
+                    conn.Close();
+                    return;
+                }
                 int count = conn.socket.EndReceive(ar);
                 //关闭信号
                 if(count <= 0)

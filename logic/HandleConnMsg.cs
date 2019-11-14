@@ -65,6 +65,8 @@ public partial class HandleConnMsg
         //是否已经登录
         ProtocolBytes protocolLogout = new ProtocolBytes();
         protocolLogout.AddString("Logout");
+        Console.WriteLine("登出：" + id);
+        protocolLogout.AddString(id);
         if(!Player.KickOff(id, protocolLogout))
         {
             protocolRet.AddInt(-1);

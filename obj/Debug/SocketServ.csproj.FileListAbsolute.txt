@@ -21,3 +21,13 @@ E:\githubWorkspace\SocketServ\bin\Debug\SocketServ.exe
 E:\githubWorkspace\SocketServ\bin\Debug\SocketServ.pdb
 E:\githubWorkspace\SocketServ\bin\Debug\Renci.SshNet.dll
 E:\githubWorkspace\SocketServ\obj\Debug\SocketServ.csprojResolveAssemblyReference.cache
+G:\private\SocketServ\bin\Debug\SocketServ.exe.config
+G:\private\SocketServ\obj\Debug\SocketServ.exe
+G:\private\SocketServ\obj\Debug\SocketServ.pdb
+G:\private\SocketServ\bin\Debug\SocketServ.exe
+G:\private\SocketServ\bin\Debug\SocketServ.pdb
+G:\private\SocketServ\bin\Debug\MySql.Data.dll
+G:\private\SocketServ\bin\Debug\Google.Protobuf.dll
+G:\private\SocketServ\bin\Debug\Renci.SshNet.dll
+G:\private\SocketServ\bin\Debug\BouncyCastle.Crypto.dll
+G:\private\SocketServ\obj\Debug\SocketServ.csprojResolveAssemblyReference.cache

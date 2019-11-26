@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{F68B633C-36B5-4056-AA8F-745211EE5918}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="core/Player.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="logic/Room.cs">
     <Files>
       <File FileName="core/ServNet.cs" Line="224" Column="17" />
-      <File FileName="core/Player.cs" Line="58" Column="13" />
+      <File FileName="core/Player.cs" Line="54" Column="59" />
       <File FileName="core/Conn.cs" Line="77" Column="6" />
       <File FileName="logic/PlayerTempData.cs" Line="6" Column="6" />
       <File FileName="core/DataMgr.cs" Line="14" Column="9" />
@@ -14,6 +14,7 @@
       <File FileName="core/MainClass.cs" Line="45" Column="41" />
       <File FileName="logic/ScenePlayer.cs" Line="8" Column="2" />
       <File FileName="logic/Scene.cs" Line="37" Column="17" />
+      <File FileName="logic/Room.cs" Line="9" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

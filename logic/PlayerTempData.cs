@@ -2,7 +2,7 @@
 {
     public PlayerTempData()
     {
-
+        status = Status.None;
     }
 
     //状态

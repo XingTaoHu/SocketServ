@@ -60,7 +60,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="logic\HandleRoomMsg.cs" />
     <Compile Include="logic\Room.cs" />
+    <Compile Include="logic\RoomMgr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="logic\PlayerData.cs" />
     <Compile Include="core\DataMgr.cs" />

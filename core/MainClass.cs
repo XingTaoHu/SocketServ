@@ -44,6 +44,7 @@ class MainClass
         DataMgr dataMgr = new DataMgr();
         ServNet servNet = new ServNet();
         Scene scene = new Scene();
+        RoomMgr roomMgr = new RoomMgr();
         servNet.proto = new ProtocolBytes();
         servNet.Start("127.0.0.1", 1234);
 

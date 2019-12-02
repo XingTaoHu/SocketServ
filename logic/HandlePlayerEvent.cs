@@ -12,5 +12,12 @@ public class HandlePlayerEvent
     public void OnLogout(Player player)
     {
         Scene.instance.DelPlayer(player.id);
+        if (player.tempData.status == PlayerTempData.Status.Room)
+        {
+            Room room = player.tempData.room;
+            RoomMgr.instance.LeaveRoom(player);
+            if (room != null)
+                room.Broadcast(room.GetRoomInfo());
+        }
     }
 }

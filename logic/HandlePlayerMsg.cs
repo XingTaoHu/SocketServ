@@ -59,4 +59,5 @@ public partial class HandlePlayerMsg{
         protoRet.AddInt(score);
         ServNet.instance.Broadcast(protoRet);
     }
+
 }

@@ -148,4 +148,31 @@ public class Room
         return true;
     }
 
+    /// <summary>
+    /// 开战
+    /// </summary>
+    public void StartFight()
+    {
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("Fight");
+        status = Status.Fight;
+        int teamPos1 = 1;
+        int teamPos2 = 2;
+        lock (list)
+        {
+            protocol.AddInt(list.Count);
+            foreach (Player p in list.Values) {
+                p.tempData.hp = 200;
+                protocol.AddString(p.id);
+                protocol.AddInt(p.tempData.team);
+                if (p.tempData.team == 1)
+                    protocol.AddInt(teamPos1++);
+                else
+                    protocol.AddInt(teamPos2++);
+                p.tempData.status = PlayerTempData.Status.Fight;
+            }
+            Broadcast(protocol);
+        }
+    }
+
 }

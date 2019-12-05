@@ -2,11 +2,11 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="logic/Room.cs">
     <Files>
       <File FileName="core/ServNet.cs" Line="224" Column="17" />
-      <File FileName="core/Player.cs" Line="54" Column="59" />
+      <File FileName="core/Player.cs" Line="7" Column="36" />
       <File FileName="core/Conn.cs" Line="77" Column="6" />
-      <File FileName="logic/PlayerTempData.cs" Line="6" Column="6" />
+      <File FileName="logic/PlayerTempData.cs" Line="8" Column="9" />
       <File FileName="core/DataMgr.cs" Line="14" Column="9" />
-      <File FileName="logic/PlayerData.cs" Line="10" Column="2" />
+      <File FileName="logic/PlayerData.cs" Line="10" Column="25" />
       <File FileName="logic/HandlePlayerEvent.cs" Line="10" Column="1" />
       <File FileName="logic/HandleConnMsg.cs" Line="108" Column="10" />
       <File FileName="logic/HandlePlayerMsg.cs" Line="31" Column="6" />
@@ -14,7 +14,7 @@
       <File FileName="core/MainClass.cs" Line="45" Column="41" />
       <File FileName="logic/ScenePlayer.cs" Line="8" Column="2" />
       <File FileName="logic/Scene.cs" Line="37" Column="17" />
-      <File FileName="logic/Room.cs" Line="9" Column="5" />
+      <File FileName="logic/Room.cs" Line="19" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

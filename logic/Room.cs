@@ -175,4 +175,70 @@ public class Room
         }
     }
 
+    /// <summary>
+    /// 胜负判断
+    /// </summary>
+    /// <returns>The window.</returns>
+    private int IsWin()
+    {
+        if (status != Status.Fight)
+            return 0;
+        int count1 = 0;
+        int count2 = 0;
+        foreach(Player player in list.Values)
+        {
+            PlayerTempData pt = player.tempData;
+            if (pt.team == 1 && pt.hp > 0) count1++;
+            if (pt.team == 2 && pt.hp > 0) count2++;
+        }
+        if (count1 <= 0) return 2;
+        if (count2 <= 0) return 1;
+        return 0;
+    }
+
+    /// <summary>
+    /// 更新结果协议
+    /// </summary>
+    public void UpdateWin()
+    {
+        int isWin = IsWin();
+        if (isWin == 0)
+            return;
+        lock(list)
+        {
+            status = Status.Prepare;
+            foreach(Player player in list.Values)
+            {
+                player.tempData.status = PlayerTempData.Status.Room;
+                if (player.tempData.team == isWin)
+                    player.data.win++;
+                else
+                    player.data.fail++;
+            }
+        }
+        ProtocolBytes protocol = new ProtocolBytes();
+        protocol.AddString("Result");
+        protocol.AddInt(isWin);
+        Broadcast(protocol);
+    }
+
+    /// <summary>
+    /// 中途退出战斗
+    /// </summary>
+    /// <param name="player">Player.</param>
+    public void ExitFight(Player player)
+    {
+        if (list[player.id] != null)
+            list[player.id].tempData.hp = -1;
+        ProtocolBytes protoRet = new ProtocolBytes();
+        protoRet.AddString("Hit");
+        protoRet.AddString(player.id);
+        protoRet.AddString(player.id);
+        protoRet.AddFloat(999);
+        Broadcast(protoRet);
+        if (IsWin() == 0)
+            player.data.fail++;
+        UpdateWin();
+    }
+
 }

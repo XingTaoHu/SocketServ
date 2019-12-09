@@ -1,20 +1,11 @@
 ﻿<Properties StartupConfiguration="{F68B633C-36B5-4056-AA8F-745211EE5918}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="logic/Room.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="logic/HandlePlayerEvent.cs">
     <Files>
-      <File FileName="core/ServNet.cs" Line="224" Column="17" />
-      <File FileName="core/Player.cs" Line="7" Column="36" />
-      <File FileName="core/Conn.cs" Line="77" Column="6" />
-      <File FileName="logic/PlayerTempData.cs" Line="8" Column="9" />
-      <File FileName="core/DataMgr.cs" Line="14" Column="9" />
-      <File FileName="logic/PlayerData.cs" Line="10" Column="25" />
-      <File FileName="logic/HandlePlayerEvent.cs" Line="10" Column="1" />
-      <File FileName="logic/HandleConnMsg.cs" Line="108" Column="10" />
-      <File FileName="logic/HandlePlayerMsg.cs" Line="31" Column="6" />
-      <File FileName="core/ProtocolBytes.cs" Line="85" Column="6" />
-      <File FileName="core/MainClass.cs" Line="45" Column="41" />
-      <File FileName="logic/ScenePlayer.cs" Line="8" Column="2" />
-      <File FileName="logic/Scene.cs" Line="37" Column="17" />
-      <File FileName="logic/Room.cs" Line="19" Column="1" />
+      <File FileName="logic/HandleRoomMsg.cs" Line="7" Column="37" />
+      <File FileName="logic/HandleBattleMsg.cs" Line="158" Column="6" />
+      <File FileName="logic/PlayerTempData.cs" Line="29" Column="31" />
+      <File FileName="logic/Room.cs" Line="240" Column="32" />
+      <File FileName="logic/HandlePlayerEvent.cs" Line="26" Column="48" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
